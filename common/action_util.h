@@ -30,6 +30,7 @@ void del_key(uint8_t key);
 void clear_keys(void);
 
 /* modifier */
+bool has_mod(uint8_t mod);
 uint8_t get_mods(void);
 void add_mods(uint8_t mods);
 void del_mods(uint8_t mods);

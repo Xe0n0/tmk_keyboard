@@ -480,6 +480,8 @@ enum internal_special_keycodes {
     KC_MS_ACCEL0,
     KC_MS_ACCEL1,
     KC_MS_ACCEL2        /* 0xFF */
+    /* Virtual Code */
+
 };
 
 #endif /* KEYCODE_H */

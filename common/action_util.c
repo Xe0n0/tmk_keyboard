@@ -96,6 +96,7 @@ void clear_keys(void)
 
 
 /* modifier */
+bool has_mod(uint8_t mod) {return mod & real_mods;}
 uint8_t get_mods(void) { return real_mods; }
 void add_mods(uint8_t mods) { real_mods |= mods; }
 void del_mods(uint8_t mods) { real_mods &= ~mods; }

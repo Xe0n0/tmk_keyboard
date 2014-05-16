@@ -3,6 +3,8 @@
 #include "action.h"
 #include "util.h"
 #include "action_layer.h"
+#include "action_util.h"
+#include "keycode.h"
 
 #ifdef DEBUG_ACTION
 #include "debug.h"
@@ -120,8 +122,14 @@ action_t layer_switch_get_action(key_t key)
 #ifndef NO_ACTION_LAYER
     uint32_t layers = layer_state | default_layer_state;
     /* check top layer first */
+    if (has_mod(MOD_BIT(KC_LSHIFT)) || has_mod(MOD_BIT(KC_RSHIFT)))
+    {
+        key.row = key.row + 8;
+    }
+
     for (int8_t i = 31; i >= 0; i--) {
         if (layers & (1UL<<i)) {
+
             action = action_for_key(i, key);
             if (action.code != ACTION_TRANSPARENT) {
                 return action;
