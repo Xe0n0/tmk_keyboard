@@ -44,6 +44,11 @@ void del_weak_mods(uint8_t mods);
 void set_weak_mods(uint8_t mods);
 void clear_weak_mods(void);
 
+/* disable modifier */
+void disable_mods(uint8_t mods);
+void enable_mods(uint8_t mods);
+void set_disabled_mods(uint8_t mods);
+void clear_disabled_mods(void);
 /* oneshot modifier */
 void set_oneshot_mods(uint8_t mods);
 void clear_oneshot_mods(void);

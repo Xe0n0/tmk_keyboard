@@ -32,7 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "keymap.h"
 
 
-extern const uint8_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS];
+extern const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS];
 extern const uint16_t fn_actions[];
 
 

@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* 
+/*
  * Keycodes based on HID Usage Keyboard/Keypad Page(0x07) plus special codes
  * http://www.usb.org/developers/devclass_docs/Hut1_12.pdf
  */
@@ -38,6 +38,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define IS_MOUSEKEY_BUTTON(code) (KC_MS_BTN1   <= (code) && (code) <= KC_MS_BTN5)
 #define IS_MOUSEKEY_WHEEL(code)  (KC_MS_WH_UP  <= (code) && (code) <= KC_MS_WH_RIGHT)
 #define IS_MOUSEKEY_ACCEL(code)  (KC_MS_ACCEL0 <= (code) && (code) <= KC_MS_ACCEL2)
+
+#define IS_LOWER(code)           (0x104 <= (code) && (code) <= 0x138)
+#define IS_UPPER(code)           (0x204 <= (code) && (code) <= 0x238)
 
 #define MOD_BIT(code)   (1<<MOD_INDEX(code))
 #define MOD_INDEX(code) ((code) & 0x07)
@@ -390,7 +393,7 @@ enum hid_keyboard_keypad_usage {
     KC_RALT,
     KC_RGUI,
 
-    /* NOTE: 0xE8-FF are used for internal special purpose */ 
+    /* NOTE: 0xE8-FF are used for internal special purpose */
 };
 
 /* Special keycodes */
@@ -479,9 +482,116 @@ enum internal_special_keycodes {
     /* Mousekey accel */
     KC_MS_ACCEL0,
     KC_MS_ACCEL1,
-    KC_MS_ACCEL2        /* 0xFF */
-    /* Virtual Code */
+    KC_MS_ACCEL2,        /* 0xFF */
 
+    /* Virtual Code */
+    KC_L_A                = 0x0104,
+    KC_L_B,
+    KC_L_C,
+    KC_L_D,
+    KC_L_E,
+    KC_L_F,
+    KC_L_G,
+    KC_L_H,
+    KC_L_I,
+    KC_L_J,
+    KC_L_K,
+    KC_L_L,
+    KC_L_M,               /* 0x110 */
+    KC_L_N,
+    KC_L_O,
+    KC_L_P,
+    KC_L_Q,
+    KC_L_R,
+    KC_L_S,
+    KC_L_T,
+    KC_L_U,
+    KC_L_V,
+    KC_L_W,
+    KC_L_X,
+    KC_L_Y,
+    KC_L_Z,
+    KC_L_1               = 0x011E,
+    KC_L_2,
+    KC_L_3,              /* 0x120 */
+    KC_L_4,
+    KC_L_5,
+    KC_L_6,
+    KC_L_7,
+    KC_L_8,
+    KC_L_9,
+    KC_L_0,
+    KC_L_ENT,
+    KC_L_ESC,
+    KC_L_BSPC,
+    KC_L_TAB,
+    KC_L_SPC,
+    KC_L_MINS,
+    KC_L_EQL,
+    KC_L_LBRC,
+    KC_L_RBRC,        /* 0x30 */
+    KC_L_BSLS,          /* \ (and |) */
+    KC_L_NONUS_HASH,      /* Non-US # and ~ */
+    KC_L_SCOLON,          /* ; (and :) */
+    KC_L_QUOTE,           /* ' and " */
+    KC_L_GRV,           /* Grave accent and tilde */
+    KC_L_COMMA,           /* , and < */
+    KC_L_DOT,             /* . and > */
+    KC_L_SLSH,           /* / and ? */
+
+    KC_U_A                = 0x204,
+    KC_U_B,
+    KC_U_C,
+    KC_U_D,
+    KC_U_E,
+    KC_U_F,
+    KC_U_G,
+    KC_U_H,
+    KC_U_I,
+    KC_U_J,
+    KC_U_K,
+    KC_U_L,
+    KC_U_M,               /* 0x210 */
+    KC_U_N,
+    KC_U_O,
+    KC_U_P,
+    KC_U_Q,
+    KC_U_R,
+    KC_U_S,
+    KC_U_T,
+    KC_U_U,
+    KC_U_V,
+    KC_U_W,
+    KC_U_X,
+    KC_U_Y,
+    KC_U_Z,
+    KC_U_1               = 0x021E, /* ! */
+    KC_U_2,              /* @ */
+    KC_U_3,              /* 0x220 */
+    KC_U_4,              /* $ */
+    KC_U_5,              /* % */
+    KC_U_6,              /* ^ */
+    KC_U_7,              /* & */
+    KC_U_8,              /* * */
+    KC_U_9,              /* ( */
+    KC_U_0,              /* ) */
+    KC_U_ENT,
+    KC_U_ESC,
+    KC_U_BSPC,
+    KC_U_TAB,
+    KC_U_SPC,
+    KC_U_MINS,              /* _ */
+    KC_U_EQL,              /* + */
+    KC_U_LBRC,           /* { */
+    KC_U_RBRC,        /* 0x30 */
+    KC_U_BSLS,          /* \ (and |) */
+    KC_U_NONUS_HASH,      /* Non-US # and ~ */
+    KC_U_SCOLON,          /* ; (and :) */
+    KC_U_QUOTE,           /* ' and " */
+    KC_U_GRV,           /* Grave accent and tilde */
+    KC_U_COMMA,           /* , and < */
+    KC_U_DOT,             /* . and > */
+    KC_U_SLSH,           /* / and ? */
 };
 
 #endif /* KEYCODE_H */

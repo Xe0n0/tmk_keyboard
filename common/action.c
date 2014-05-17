@@ -33,6 +33,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "nodebug.h"
 #endif
 
+static uint8_t trim_mods;
+
 
 void action_exec(keyevent_t event)
 {
@@ -78,10 +80,14 @@ void process_action(keyrecord_t *record)
                 uint8_t mods = (action.kind.id == ACT_LMODS) ?  action.key.mods :
                                                                 action.key.mods<<4;
                 if (event.pressed) {
+                    clear_disabled_mods();
                     if (mods) {
                         add_weak_mods(mods);
-                        send_keyboard_report();
                     }
+                    else
+                      clear_weak_mods();
+
+                    send_keyboard_report();
                     register_code(action.key.code);
                 } else {
                     unregister_code(action.key.code);
@@ -202,6 +208,25 @@ void process_action(keyrecord_t *record)
             }
             break;
 #endif
+        case ACT_TRIM_MODS:
+            {
+              uint8_t mods = (MOD_LSFT << 4) | MOD_RSFT;
+
+                if (event.pressed) {
+                    if (mods) {
+                        disable_mods(mods);
+                        send_keyboard_report();
+                    }
+                    register_code(action.key.code);
+                } else {
+                    unregister_code(action.key.code);
+                    if (mods) {
+                        enable_mods(mods);
+                        send_keyboard_report();
+                    }
+                }
+            break;
+            }
 #ifndef NO_ACTION_LAYER
         case ACT_LAYER:
             if (action.layer_bitop.on == 0) {

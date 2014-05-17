@@ -29,6 +29,7 @@ static inline void del_key_bit(uint8_t code);
 
 static uint8_t real_mods = 0;
 static uint8_t weak_mods = 0;
+static uint8_t disabled_mods = 0;
 
 
 // TODO: pointer variable is not needed
@@ -46,6 +47,7 @@ static int16_t oneshot_time = 0;
 void send_keyboard_report(void) {
     keyboard_report->mods  = real_mods;
     keyboard_report->mods |= weak_mods;
+    keyboard_report->mods &= ~disabled_mods;
 #ifndef NO_ACTION_ONESHOT
     if (oneshot_mods) {
 #if (defined(ONESHOT_TIMEOUT) && (ONESHOT_TIMEOUT > 0))
@@ -110,6 +112,11 @@ void del_weak_mods(uint8_t mods) { weak_mods &= ~mods; }
 void set_weak_mods(uint8_t mods) { weak_mods = mods; }
 void clear_weak_mods(void) { weak_mods = 0; }
 
+/* disable modifier */
+void disable_mods(uint8_t mods) { disabled_mods |= mods; }
+void enable_mods(uint8_t mods) { disabled_mods &= ~mods; }
+void set_disabled_mods(uint8_t mods) { disabled_mods = mods; }
+void clear_disabled_mods(void) { disabled_mods = 0; }
 /* Oneshot modifier */
 #ifndef NO_ACTION_ONESHOT
 void set_oneshot_mods(uint8_t mods)

@@ -24,13 +24,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 
 
-static action_t keycode_to_action(uint8_t keycode);
+static action_t keycode_to_action(keycode_t keycode);
+static keycode_t user_keycode;
 
 
 /* converts key to action */
 action_t action_for_key(uint8_t layer, key_t key)
 {
-    uint8_t keycode = keymap_key_to_keycode(layer, key);
+    keycode_t keycode = keymap_key_to_keycode(layer, key);
     switch (keycode) {
         case KC_FN0 ... KC_FN31:
             return keymap_fn_to_action(keycode);
@@ -121,13 +122,19 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 
 /* translates keycode to action */
-static action_t keycode_to_action(uint8_t keycode)
+static action_t keycode_to_action(keycode_t keycode)
 {
     action_t action;
     switch (keycode) {
         case KC_A ... KC_EXSEL:
         case KC_LCTRL ... KC_RGUI:
-            action.code = ACTION_KEY(keycode);
+            if IS_UPPER(keycode) {
+                uint8_t real_keycode = keycode;
+                action.code = ACTION_MODS_KEY(MOD_LSFT, real_keycode);
+            }
+            else {
+                action.code = ACTION_KEY(keycode);
+            }
             break;
         case KC_SYSTEM_POWER ... KC_SYSTEM_WAKE:
             action.code = ACTION_USAGE_SYSTEM(KEYCODE2SYSTEM(keycode));
@@ -143,6 +150,12 @@ static action_t keycode_to_action(uint8_t keycode)
             break;
         default:
             action.code = ACTION_NO;
+            if IS_UPPER(keycode) {
+                action.code = ACTION_MODS_KEY(MOD_LSFT, keycode & 0xff);
+            }
+            else if IS_LOWER(keycode) {
+                action.code = ACTION_TRIM_MODS(MOD_LSFT, keycode & 0xff);
+            }
             break;
     }
     return action;
@@ -156,7 +169,7 @@ static action_t keycode_to_action(uint8_t keycode)
  *      Consider using new keymap API instead.
  */
 __attribute__ ((weak))
-uint8_t keymap_key_to_keycode(uint8_t layer, key_t key)
+keycode_t keymap_key_to_keycode(uint8_t layer, key_t key)
 {
     return keymap_get_keycode(layer, key.row, key.col);
 }

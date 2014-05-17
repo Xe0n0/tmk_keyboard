@@ -107,6 +107,7 @@ enum action_kind_id {
     /* Other Keys */
     ACT_USAGE           = 0b0100,
     ACT_MOUSEKEY        = 0b0101,
+    ACT_TRIM_MODS       = 0b0110,
     /* Layer Actions */
     ACT_LAYER           = 0b1000,
     ACT_LAYER_TAP       = 0b1010, /* Layer  0-15 */
@@ -216,6 +217,8 @@ enum mods_codes {
 #define ACTION_MODS_TAP_KEY(mods, key)  ACTION(ACT_MODS_TAP, ((mods)&0x1f)<<8 | (key))
 #define ACTION_MODS_ONESHOT(mods)       ACTION(ACT_MODS_TAP, ((mods)&0x1f)<<8 | MODS_ONESHOT)
 #define ACTION_MODS_TAP_TOGGLE(mods)    ACTION(ACT_MODS_TAP, ((mods)&0x1f)<<8 | MODS_TAP_TOGGLE)
+
+#define ACTION_TRIM_MODS(mods, key)     ACTION(ACT_TRIM_MODS, ((mods)&0x1f)<<8 | (key))
 
 
 /*

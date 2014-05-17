@@ -6,9 +6,9 @@
 
 
 #ifdef KEYMAP_SECTION_ENABLE
-const uint8_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] __attribute__ ((section (".keymap.keymaps"))) = {
+const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] __attribute__ ((section (".keymap.keymaps"))) = {
 #else
-const uint8_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
+const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
 #endif
     /* Layer 0: Default Layer
      * ,-----------------------------------------------------------.
@@ -39,16 +39,16 @@ const uint8_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
               TRNS,TRNS,          TRNS,                TRNS,TRNS),
 
 
-    /* Layer 2: Dvorak Programmer mode - Shift
+    /* Layer 2: Dvorak Programmer mode (modified)
      */
-    KEYMAP_EXT(ESC, 1,  2,  3,   4,   5,   6,   7,   8,   9,    0,LBRC, RBRC, BSLS, GRV, \
-           TAB, SCLN,COMM,DOT, P,  Y,   F,  G,  C,  R,  L,  SLSH,  EQL, BSPC, \
+KEYMAP_EXT(ESC,U_7,LBRC,U_LBRC,U_RBRC,U_9,EQL,U_8,U_0,U_EQL,RBRC,U_1,U_3, U_BSLS, U_4, \
+           TAB, SCLN,COMM,DOT, P,  Y,   F,  G,  C,  R,  L,  SLSH,  U_2, BSPC, \
            LCTL, A,  O,    E,  U,  I,   D,   H,  T,  N,  S,  MINS, ENT,\
            LSFT, QUOT, Q,  J,  K,  X,   B,   M,  W,  V,  Z,  RSFT,  TRNS, \
               TRNS,TRNS,          TRNS,                TRNS,TRNS,\
               \
-             ESC, 2,  2,  3,   4,   5,   6,   7,   8,   9,    0,LBRC, RBRC, BSLS, GRV, \
-           TAB, SCLN,COMM,DOT, P,  Y,   F,  G,  C,  R,  L,  SLSH,  EQL, BSPC, \
+          ESC, L_1,L_2, L_3, L_4, L_5, L_6, L_7, L_8, L_9, L_0,L_GRV, BSLS, GRV, \
+           TAB, SCLN,COMM,DOT, P,  Y,   F,  G,  C,  R,  L,  SLSH,  6, BSPC, \
            LCTL, A,  O,    E,  U,  I,   D,   H,  T,  N,  S,  MINS, ENT,\
            LSFT, QUOT, Q,  J,  K,  X,   B,   M,  W,  V,  Z,  RSFT,  TRNS, \
               TRNS,TRNS,          TRNS,                TRNS,TRNS),
@@ -100,8 +100,8 @@ const uint16_t fn_actions[] PROGMEM = {
 //  [3] = ACTION_LAYER_TAP_KEY(3, KC_SCLN),           // Mousekey layer with Semicolon*
     [2] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),      // RControl with tap Enter*
     [3] = ACTION_LAYER_SET(0, ON_RELEASE),
-    [4] = ACTION_LAYER_TAP_TOGGLE(1),                 // Dvorak Layer
-    [5] = ACTION_LAYER_TAP_TOGGLE(2),                 // Dvorak Layer
+    [4] = ACTION_LAYER_TOGGLE(1),                 // Dvorak Layer
+    [5] = ACTION_LAYER_TOGGLE(2),                 // Dvorak Layer
 //    [6] = ACTION_LAYER_TAP_KEY(5, KC_SPC),            // Mousekey layer with Space
 //    [7] = ACTION_LAYER_TOGGLE(3),                     // Mousekey layer(toggle)
 //    [9] = ACTION_MODS_KEY(MOD_LSFT, KC_4),            // Shift stuck test
