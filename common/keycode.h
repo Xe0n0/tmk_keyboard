@@ -161,6 +161,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KC_TRANSPARENT  1
 #define KC_TRNS KC_TRANSPARENT
 
+#define KC_MAC_PRE 0x00
+#define KC_MAC_PLA 174
+#define KC_MAC_NEX 0x00
+#define KC_MAC_EJE 0xA1
+
 
 
 /* USB HID Keyboard/Keypad Usage(0x07) */
@@ -533,7 +538,7 @@ enum internal_special_keycodes {
     KC_L_BSLS,          /* \ (and |) */
     KC_L_NONUS_HASH,      /* Non-US # and ~ */
     KC_L_SCOLON,          /* ; (and :) */
-    KC_L_QUOTE,           /* ' and " */
+    KC_L_QUOT,           /* ' and " */
     KC_L_GRV,           /* Grave accent and tilde */
     KC_L_COMMA,           /* , and < */
     KC_L_DOT,             /* . and > */
@@ -587,7 +592,7 @@ enum internal_special_keycodes {
     KC_U_BSLS,          /* \ (and |) */
     KC_U_NONUS_HASH,      /* Non-US # and ~ */
     KC_U_SCOLON,          /* ; (and :) */
-    KC_U_QUOTE,           /* ' and " */
+    KC_U_QUOT,           /* ' and " */
     KC_U_GRV,           /* Grave accent and tilde */
     KC_U_COMMA,           /* , and < */
     KC_U_DOT,             /* . and > */

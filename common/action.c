@@ -412,7 +412,7 @@ void register_code(uint8_t code)
             set_mods(tmp_mods);
             send_keyboard_report();
             oneshot_cancel();
-        } else 
+        } else
 */
 #endif
         {
