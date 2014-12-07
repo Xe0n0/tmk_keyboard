@@ -27,7 +27,7 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
            TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC, \
            LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN, QUOT,ENT, \
            LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH, RSFT,FN1, \
-                LALT,LGUI,          SPC,                RGUI,RALT),
+                LALT,LGUI,          SPC,                RGUI,FN6),
 
 
     /* Layer 1: Colemak mode
@@ -64,9 +64,9 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
 /*            LSFT, QUOT, Q,  J,  K,  X,   B,   M,  W,  V,  Z,  RSFT,  TRNS, \ */
 /*               TRNS,TRNS,          TRNS,                TRNS,TRNS), */
 
-[3] = KEYMAP(ESC, NO, NO, NO, NO, NO, NO, NO, NO, NO, NO,LBRC, RBRC, BSLS, GRV, \
-           TAB, NO, NO, NO, NO,  NO ,7, 8, 9, NO, NO, NO, NO, BSPC, \
-           LCTL, NO, NO,  NO,  NO, NO, 4, 5, 6,  NO,  NO, NO, TRNS,\
+[3] = KEYMAP(ESC, 1, 2, 3, NO, NO, NO, NO, NO, NO, NO,LBRC, RBRC, BSLS, GRV, \
+           TAB, 4, 5, 6, NO,  NO ,7, 8, 9, NO, NO, NO, NO, BSPC, \
+           LCTL, 7, 8, 9,  NO, NO, 4, 5, 6,  NO,  NO, NO, TRNS,\
            LSFT, NO, NO,  NO,  NO, NO, 1, 2, 3,  NO,  NO,  TRNS,  TRNS, \
               TRNS,TRNS,          0,                TRNS, FN6),
 
@@ -111,7 +111,7 @@ const uint16_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
 #else
 const uint16_t fn_actions[] PROGMEM = {
 #endif
-    [0] = ACTION_DEFAULT_LAYER_SET(0),                // Default layer(not used)
+    [0] = ACTION_DEFAULT_LAYER_SET(1),                // Default layer(not used)
     [1] = ACTION_LAYER_MOMENTARY(9),                 // HHKB layer(toggle with 5 taps)
     [2] = ACTION_LAYER_TAP_KEY(3, KC_ENT),          // Cursor layer with Slash*
 //  [3] = ACTION_LAYER_TAP_KEY(3, KC_SCLN),           // Mousekey layer with Semicolon*
