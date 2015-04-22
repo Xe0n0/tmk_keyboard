@@ -128,7 +128,7 @@ static action_t keycode_to_action(keycode_t keycode)
     switch (keycode) {
         case KC_A ... KC_EXSEL:
         case KC_LCTRL ... KC_RGUI:
-            if IS_UPPER(keycode) {
+            if (IS_UPPER(keycode) && !(has_mod(MOD_BIT(KC_LGUI)) || has_mod(MOD_BIT(KC_RGUI)))) {
                 uint8_t real_keycode = keycode;
                 action.code = ACTION_MODS_KEY(MOD_LSFT, real_keycode);
             }
@@ -150,7 +150,10 @@ static action_t keycode_to_action(keycode_t keycode)
             break;
         default:
             action.code = ACTION_NO;
-            if IS_UPPER(keycode) {
+            if (has_mod(MOD_BIT(KC_LGUI)) || has_mod(MOD_BIT(KC_RGUI))) {
+                action.code = ACTION_KEY(keycode & 0xff);
+            }
+            else if IS_UPPER(keycode) {
                 action.code = ACTION_MODS_KEY(MOD_LSFT, keycode & 0xff);
             }
             else if IS_LOWER(keycode) {
