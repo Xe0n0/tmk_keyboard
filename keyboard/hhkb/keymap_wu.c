@@ -67,7 +67,7 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
 [3] = KEYMAP(ESC, 1, 2, 3, NO, NO, NO, NO, NO, NO, NO,LBRC, RBRC, BSLS, GRV, \
            TAB, 4, 5, 6, U_EQL,  NO ,7, 8, 9, NO, NO, NO, NO, BSPC, \
            LCTL, 7, 8, 9,  MINS, NO, 4, 5, 6,  NO,  NO, NO, TRNS,\
-           LSFT, NO, 0, BSLS,  NO, NO, 1, 2, 3,  NO,  NO,  TRNS,  TRNS, \
+           LSFT, DOT, 0, BSLS,  NO, NO, 1, 2, 3,  NO,  NO,  TRNS,  TRNS, \
               TRNS,TRNS,          TRNS,                TRNS, FN6),
 
     /* Layer 9: HHKB mode (HHKB Fn)
