@@ -11,17 +11,17 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] __attribute__ ((section (".
 const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
 #endif
 
-    /** Layer 0: Colemak Programmer mode (modified)
+    /** Layer 0: Colemak Programmer mode
      */
-    [0] = KEYMAP_EXT(ESC, U_1,  U_2,  U_3,   U_4,   U_5,   U_6,   U_7,   U_8, U_9, U_0, MINS, EQL, BSLS, GRV, \
+    [0] = KEYMAP_EXT(ESC, U_1,  U_2, U_3,  U_4, U_5, U_6, U_7, U_8, U_9, U_0, MINS, EQL, BSLS, GRV, \
            TAB, Q,  W,   F,   P,   G,   J,   L,   U,   Y, SCLN,  LBRC, RBRC, BSPC, \
-           LCTL,A,  R,   S,   T,   D,   H,   N,   E,   I,  O,    U_QUOT, ENT,\
+           LCTL,A,  R,   S,   T,   D,   H,   N,   E,   I,  O,    L_QUOT, ENT,\
            LSFT,Z,  X,   C,   V,   B,   K,   M, COMM, DOT,  SLSH,  RSFT, FN1, \
               LALT,LGUI,          SPC,                RGUI, FN6,\
             \
            ESC, L_1,  L_2,  L_3,   L_4,   L_5,   L_6,   L_7,   L_8,   L_9,    L_0, MINS, EQL, BSLS, GRV, \
            TAB, Q,  W,   F,   P,   G,   J,   L,   U,   Y, SCLN,  LBRC, RBRC, BSPC, \
-           LCTL,A,  R,   S,   T,   D,   H,   N,   E,   I,  O,    L_QUOT, ENT,\
+           LCTL,A,  R,   S,   T,   D,   H,   N,   E,   I,  O,    U_QUOT, ENT,\
            LSFT,Z,  X,   C,   V,   B,   K,   M, COMM, DOT,  SLSH,  RSFT, FN1, \
               LALT,LGUI,          SPC,                RGUI, FN6),
 
@@ -64,10 +64,10 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
 /*            LSFT, QUOT, Q,  J,  K,  X,   B,   M,  W,  V,  Z,  RSFT,  TRNS, \ */
 /*               TRNS,TRNS,          TRNS,                TRNS,TRNS), */
 
-[3] = KEYMAP(ESC, 1, 2, 3, NO, NO, NO, NO, NO, NO, NO,LBRC, RBRC, BSLS, GRV, \
-           TAB, 4, 5, 6, U_EQL,  NO ,7, 8, 9, NO, NO, NO, NO, BSPC, \
-           LCTL, 7, 8, 9,  MINS, NO, 4, 5, 6,  NO,  NO, NO, TRNS,\
-           LSFT, DOT, 0, BSLS,  NO, NO, 1, 2, 3,  NO,  NO,  TRNS,  TRNS, \
+[3] = KEYMAP(ESC, 1, 2, 3, U_EQL, MINS, NO, NO, NO, NO, NO,LBRC, RBRC, BSLS, GRV, \
+           TAB, 4, 5, 6, U_LBRC,  U_RBRC ,7, 8, 9, NO, NO, NO, NO, BSPC, \
+           LCTL, 7, 8, 9,  EQL, EQL, 4, 5, 6,  NO,  NO, NO, TRNS,\
+           LSFT, DOT, 0, NO,  NO, NO, 1, 2, 3,  NO,  NO,  TRNS,  TRNS, \
               TRNS,TRNS,          TRNS,                TRNS, FN6),
 
     /* Layer 9: HHKB mode (HHKB Fn)
@@ -85,7 +85,7 @@ const uint16_t keymaps[][KEYCODE_ROWS][KEYCODE_COLS] PROGMEM = {
      *       `-------------------------------------------'
      */
 [9] = KEYMAP(FN3, FN4,  FN5,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, MAC_EJE, \
-           CAPS,NO,  NO,  NO,  NO,  NO,  NO,  NO,  PSCR,SLCK,PAUS, UP,  NO,  DEL, \
+           CAPS,F1,  F2,  F3,  NO,  NO,  NO,  NO,  PSCR,SLCK,PAUS, UP,  NO,  DEL, \
            LCTL,VOLD,VOLU,MUTE,NO,  FN9, PAST,PSLS,HOME,PGUP,LEFT,RGHT,ENT, \
            LSFT,F18,MPLY, F19, NO,  NO,  PPLS,PMNS,END, PGDN,DOWN,RSFT,TRNS, \
               TRNS,TRNS,          TRNS,                TRNS,TRNS),
