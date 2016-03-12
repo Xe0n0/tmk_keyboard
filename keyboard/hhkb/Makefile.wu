@@ -61,6 +61,8 @@ endif
 
 CONFIG_H = config.h
 
+# NO TAPPING
+OPT_DEFS += -DNO_ACTION_TAPPING
 
 # MCU name
 # PJRC Teensy++ 2.0

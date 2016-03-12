@@ -45,14 +45,14 @@ void action_exec(keyevent_t event)
 
     keyrecord_t record = { .event = event };
 
-#ifndef NO_ACTION_TAPPING
-    action_tapping_process(record);
-#else
+// #ifndef NO_ACTION_TAPPING
+//     action_tapping_process(record);
+// #else
     process_action(&record);
     if (!IS_NOEVENT(record.event)) {
         dprint("processed: "); debug_record(record); dprintln();
     }
-#endif
+// #endif
 }
 
 void process_action(keyrecord_t *record)

@@ -113,7 +113,8 @@ const uint16_t fn_actions[] PROGMEM = {
 #endif
     [0] = ACTION_DEFAULT_LAYER_SET(0),                // Default layer(not used)
     [1] = ACTION_LAYER_MOMENTARY(9),                 // HHKB layer(toggle with 5 taps)
-    [2] = ACTION_LAYER_TAP_KEY(3, KC_ENT),          // Cursor layer with Slash*
+    [2] = ACTION_LAYER_MOMENTARY(9),                 // HHKB layer(toggle with 5 taps)
+//    [2] = ACTION_LAYER_TAP_KEY(3, KC_ENT),          // Cursor layer with Slash*
 //  [3] = ACTION_LAYER_TAP_KEY(3, KC_SCLN),           // Mousekey layer with Semicolon*
     /* [2] = ACTION_MODS_TAP_KEY(MOD_RCTL, KC_ENT),      // RControl with tap Enter* */
     [3] = ACTION_LAYER_SET(0, ON_RELEASE),
@@ -163,8 +164,8 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
     if (record->event.pressed) dprint("P"); else dprint("R");
     dprintf("%d", record->tap.count);
-    if (record->tap.interrupted) dprint("i");
-    dprint("\n");
+   // if (record->tap.interrupted) dprint("i");
+   // dprint("\n");
 
     switch (id) {
         case TEST:
